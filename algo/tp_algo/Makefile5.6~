@@ -1,0 +1,18 @@
+GCCOPT=-Wall
+%: %.c
+	gcc $(GCCOPT) -o $@ $@.c
+
+palin: mainpalin.o
+	gcc -o palin mainpalin.o -L. -l mylib -l readline
+mainpalin.o: mainpalin.c
+	gcc -c -Wall mainpalin.c
+ana: mainana.o
+	gcc -o ana mainana.o -L. -l mylib -l readline
+mainana.o: mainana.c
+	gcc -c -Wall mainana.c
+libmylib.a: palin.o ana.o
+	ar -rs libmylib.a palin.o ana.o
+palin.o: palin.c mylib.h
+	cc -Wall -l palin.c
+ana.o: ana.c mylib.h
+	cc -Wall -l ana.c 

@@ -1,0 +1,49 @@
+# include <stdio.h>
+# include <string.h>
+# include <stdlib.h>	
+
+/*commentaire*/
+struct Element
+{
+	int valeur;
+	int rang;//facultatif
+	struct Element *suivant;
+};
+typedef struct Element *Liste;
+/* retourner la drniere occurence d'une valeur*/
+void retourner(Liste l,int val)
+{
+Liste dern;
+dern=NULL;
+while (l !=NULL)
+	{
+	if (l->valeur== val)
+	dern=l;
+	l=l-> suivant;
+	}
+return dern;
+main()
+{
+
+}
+}
+
+/* supprimer d'une liste toutes les occurences d'une valeurdefinie*/
+/*void supprimerocc(Liste l,int val)
+{
+Liste temp=NULL;
+if (l->valeur==val)
+}
+
+
+
+
+
+
+		
+int main ()			
+{
+Liste l;
+l= (Liste) malloc (sizeof(struct Element));
+l->valeur
+}*/

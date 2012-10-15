@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+     <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+     <html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr">
+
+ <head>
+	<meta charset="utf8" />
+    	 	<title>
+     licence pro
+    		</title>
+ </head>
+     
+
+ <body>
+     <h1><font color="blue">remise à niveau pour le cours de</font> <br />Développement Web <br />en licence professionnelle</h1>
+<blockquote>
+<h2> Organisation pratique :</h2>
+<p>3 séances de 2h30, leslundi, mardi, mercredi de 14 h à 16 h 30.
+<br />
+Planning previsionnel :
+<table border="1"class="collapse">
+<tr>
+<th>jour</th>
+<th>Horaire</th>
+<th>durée</th>
+
+<tr>
+
+<tr>
+<td>lundi</td>
+<td>14h - 16h30</td>
+<td>2 h30</td>
+
+<tr>
+
+<tr>
+<td>mardi</td>
+<td>14h - 16h30</td>
+<td>2 h30</td>
+
+<tr>
+
+<tr>
+<td>mercredi</td>
+<td>14h - 16h30</td>
+<td>2 h30</td>
+<tr>
+</table>
+</blockquote>
+<ol type="i" start="9">
+<li><a href=""septembre</a></li>
+<li>octore</li>
+<li>decembre</li>
+</ol>
+<form action="http">
+<input type="text" value="5" name="M" />
+<input type="submit" value="jour par mois" name="J" />
+</form>
+ </body>
+
+</html>

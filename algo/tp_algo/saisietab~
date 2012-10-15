@@ -1,0 +1,10 @@
+# include <stdio.h>
+#define size 30
+int tabmax, i,tab[size];
+void main(){
+printf(" Combien de valeurs voulez-vous saisir? %d \n");
+scanf("%d",tabmax);
+for(i=0;i<tabmax;i++)
+printf("donner la %d ème valeur du tableau \n");
+scanf("%d",tab[i]);
+}

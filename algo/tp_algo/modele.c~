@@ -1,0 +1,15 @@
+# include <stdio.h>
+# include <string.h>
+# define const 10 		/*declaration des constantes*/
+
+/*programme principal*/			
+int main ()			
+{
+/*commentaire*/
+printf(1, "Donner un entier, un reel et un carctere : ", );
+
+
+/*commentaire*/
+
+
+}

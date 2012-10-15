@@ -1,0 +1,140 @@
+#include <stdlib.h>
+#include <stdio.h>
+
+struct noeud
+{
+	int valeur;
+	struct noeud * gauche;
+	struct noeud * droit;
+};
+
+typedef struct noeud * Arbre;
+typedef int TAB[20];
+
+void insererABR(Arbre *a,int x)
+{
+	if (*a == NULL)
+		{
+			*a = (Arbre) malloc(sizeof(struct noeud));
+			(*a)->gauche = NULL;
+			(*a)->droit = NULL;
+			(*a)->valeur = x;
+		}
+	else
+		if ((*a)->valeur < x)
+			insererABR(&(*a)->droit,x);
+		else
+			insererABR(&(*a)->gauche,x);
+}
+
+void infixe(Arbre a)
+{
+	if (a != NULL)
+		{
+			infixe(a->gauche);
+			printf("%d ",a->valeur);
+			infixe(a->droit);
+		}
+}
+
+void ab_vers_abr (Arbre ab,Arbre *abr)
+{
+if (ab!=NULL)
+	{
+	insererABR(&(*abr),ab->valeur);
+	ab_vers_abr(ab->gauche,&(*abr));
+	ab_vers_abr(ab->droit,&(*abr));
+	
+	}	
+}
+
+void TriTableau( TAB tab,int n)
+{
+int j=0;
+Arbre abr=NULL;
+int i;
+for(i=0;i<n;i++)
+	insererABR(&abr,tab[i]);
+	remplitableau (abr,tab,&j);
+
+}
+
+remplitableau(Arbre a,TAB t,int*j)
+{
+	if (a!=NULL)
+	{
+	remplitableau(a->gauche,t,&(*j));
+	t[*j]=a->valeur;
+	(*j)++;
+	remplitableau(a->droit,t,&(*j));
+	}
+}
+
+
+
+int main()
+{
+	Arbre ab,abr;
+	Arbre tmp1,tmp2,tmp3,tmp4,tmp5,tmp6,tmp7,tmp8,tmp9;
+
+	ab = NULL;
+	abr = NULL;
+
+	tmp1 = (Arbre)malloc(sizeof(struct noeud));
+	tmp1->valeur = 1;
+	tmp1->gauche = NULL;
+	tmp1->droit = NULL;
+	tmp2 = (Arbre)malloc(sizeof(struct noeud));
+	tmp2->valeur = 3;
+	tmp2->gauche = NULL;
+	tmp2->droit = NULL;
+	tmp3 = (Arbre)malloc(sizeof(struct noeud));
+	tmp3->valeur = 7;
+	tmp3->droit = NULL;
+	tmp4 = (Arbre)malloc(sizeof(struct noeud));
+	tmp4->valeur = 2;
+	tmp4->gauche = NULL;
+	tmp4->droit = NULL;
+	tmp5 = (Arbre)malloc(sizeof(struct noeud));
+	tmp5->valeur = 9;
+	tmp5->gauche = tmp1;
+	tmp5->droit = tmp2;
+	tmp6 = (Arbre)malloc(sizeof(struct noeud));
+	tmp6->valeur = 10;
+	tmp6->gauche = NULL;
+	tmp6->droit = tmp3;
+	tmp7 = (Arbre)malloc(sizeof(struct noeud));
+	tmp7->valeur = 6;
+	tmp7->gauche = tmp4;
+	tmp7->droit = NULL;
+	tmp8 = (Arbre)malloc(sizeof(struct noeud));
+	tmp8->valeur = 4;
+	tmp8->gauche = tmp5;
+	tmp8->droit = NULL;
+	tmp9 = (Arbre)malloc(sizeof(struct noeud));
+	tmp9->valeur = 8;
+	tmp9->gauche = tmp6;
+	tmp9->droit = tmp7;
+	ab = (Arbre)malloc(sizeof(struct noeud));
+	ab->valeur = 5;
+	ab->gauche = tmp8;
+	ab->droit = tmp9;
+
+	printf("AB\n");
+	infixe(ab);
+	printf("\nABR\n");
+	infixe(abr);
+	ab_vers_abr(ab,&abr);
+	printf("\nABR\n");
+	infixe(abr);
+	printf("\n");
+
+TAB t={2,5,3,7,8,4,2,1};
+TriTableau(t,8); // sizeof(t)/sizeof(*t)
+int i;
+for (i=0;i<8;i++)
+	printf("%d ",t[i]);
+printf("\n");
+
+	return 0;
+}

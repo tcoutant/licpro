@@ -1,0 +1,18 @@
+
+
+
+struct noeud
+{
+	int val;
+	struct noeud *gauche;
+	struct noeud *droit;
+};
+typedef struct noeud arbre;
+
+
+int taille_arbre(arbre mon_arbre)
+{
+int ta=0;
+if (mon_arbre==NULL) return 0;
+else return 1+taille_arbre(mon_arbre->gauche)+taille_arbre(mon_arbre->droit);
+}

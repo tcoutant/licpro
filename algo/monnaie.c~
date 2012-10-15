@@ -1,0 +1,23 @@
+# include <stdio.h>
+int pays;
+void main() {
+printf ("Choisissez un pays : 1 France, 2 Angleterre, 3 mexique, 4 Espagne :\n");
+scanf ("%d", &pays);
+switch pays {
+case 1 :
+printf ("c'est l'euro :\n");
+break;
+case 2 :
+printf ("c'est la Livre :\n");
+break;
+case 3 :
+printf ("c'est le peso :\n");
+break;
+case 4 :
+printf ("c'est l'euro :\n");
+break;
+default :
+printf ("mauvais choix :\n");
+break;
+}
+}

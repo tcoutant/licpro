@@ -1,0 +1,11 @@
+GCCOPT=-Wall
+%: %.c
+	gcc $(GCCOPT) -o $@ $@.c
+
+
+palin: mainpalin.o palin.o
+	gcc -o palin mainpalin.o palin.o -l readline
+mainpalin.o: mainpalin.c palin.h
+	gcc -c -Wall mainpalin.c
+palin.o: palin.c palin.h
+	gcc -c -Wall palin.c

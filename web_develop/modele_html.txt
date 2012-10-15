@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+     <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+     <html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr">
+
+ <!-- .....OU........pour Transitionnnal......
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+     <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+     <html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr">
+-->
+     <head>
+	 <meta charset="utf8" />
+    	 <title>
+     ceci est le titre du document 
+    	 </title>
+	
+     </head>
+
+     <body>
+     ceci est le corps du document.Ah!! 
+     <!-- un commentaire -->
+     </body>
+</html>
+

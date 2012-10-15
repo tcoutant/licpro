@@ -1,0 +1,28 @@
+# include <stdio.h>
+# include <math.h>
+
+int size,rep, coup,nb;
+
+void main()  
+{
+coup=1;size=1000;
+srandom(getpid());
+nb=random()%size;
+printf ("donner un nombre :  ");
+scanf("%d",&rep);
+while ((rep!=nb)&&(coup<10))
+{
+	if
+	(rep<nb)
+	printf("   trop petit. \n" );
+	else
+	printf("   trop grand. \n");
+	
+	coup++;
+	scanf("%d",&rep);
+}
+if(coup==10)
+printf("vous avez perdu, le nombre était %d \n",nb);
+else
+printf("vous avez gagné en %d coups. \n",coup);
+}

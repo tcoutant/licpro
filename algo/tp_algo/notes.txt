@@ -1,0 +1,13 @@
+pour compiler :
+
+  cc -Wall -o 1.12 1.12.c
+
+ou bien :
+
+  export CFLAGS=-Wall
+  make 1.12
+
+La variable CFLAGS n'est valable que pour la session courante.
+Pour la redéfinir automatiquement à chaque fois, mettre la ligne 
+dans le fichier ~/.bashrc.
+
