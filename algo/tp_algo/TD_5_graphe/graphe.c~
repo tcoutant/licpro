@@ -203,8 +203,6 @@ succL2(gl,1);
 printf("PREDECESSEURS\n");
 predM(gm,2);
 predL(gl,2);
-predL(gl,3);
-predL(gl,4);
 
 printf("SUPPRESSION\n");
 supprimeArcL(gl,1,2);
