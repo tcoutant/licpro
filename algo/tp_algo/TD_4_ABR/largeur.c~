@@ -23,8 +23,8 @@ void enfiler(File *mafile, Arbre val)
 	File tmp;
 	tmp = (File)malloc(sizeof(struct Element));
 	tmp->valeur = val;
-	tmp->suivant = *mafile; 	//enfiler se fait au debut de la liste
-	*mafile=tmp;		// ma file pointe maintenant vers tmp inseré
+	tmp->suivant = *mafile;
+	*mafile=tmp;
 }
 
 File defiler(File *mafile)
@@ -177,8 +177,6 @@ int main()
 //	larg(ab);
 //	printf("\nV2\n");
 	largeur(ab,&f);
-	printf("\n");
-	infixe(ab);
 	printf("\n");
 
 	return 0;

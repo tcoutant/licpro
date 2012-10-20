@@ -183,9 +183,7 @@ afficheGrapheL(gl);
 
 printf("AJOUT\n");
 ajoutArcL(gl,1,2);
-ajoutArcL(gl,1,3);
 ajoutArcM(gm,1,2);
-ajoutArcM(gm,1,3);
 
 printf("GM\n");
 afficheGrapheM(gm);
@@ -203,8 +201,6 @@ succL2(gl,1);
 printf("PREDECESSEURS\n");
 predM(gm,2);
 predL(gl,2);
-predL(gl,3);
-predL(gl,4);
 
 printf("SUPPRESSION\n");
 supprimeArcL(gl,1,2);
