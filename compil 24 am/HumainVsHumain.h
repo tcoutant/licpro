@@ -1,0 +1,3 @@
+void HumainVsHumain();
+
+void JoueurvsCPUMaxPions();

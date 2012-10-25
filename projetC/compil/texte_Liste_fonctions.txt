@@ -1,0 +1,212 @@
+				ftour.c
+
+existeCoupPourJouer
+	-> teste si le joueur peut jouer un coup ou pas (1 pour vrai 0 pour faux)
+	int existeCoupPourJoueur(plateau p,int joueur)
+
+partieTerminee
+	-> si il existe plus de coup à jouer pour 1 et 2 renvoie 0 sinon 1
+	=> appel de existeCoupPourJoueur
+	int partieTerminee(plateau p)
+
+comptePions
+	-> compte le nombre de pions pour chaque joueur
+	void comptePions(plateau p, int *NbPions1, int *NbPions2)
+
+joueLeCoup
+	-> retourne le pion
+	=> appel à la fonction retournePions pour retourner les lignes
+	=> appelle la fonction afficherPlateau
+	void joueLeCoup(plateau p, int NumLigne, int NumColonne, int joueur)
+
+coupValide
+	-> teste si une case peut etre jouée (0 ou 1)
+	=> appel faitPrise
+	=> appel renvoieContenuCase
+	int coupValide(int joueur, plateau p, int NumLigne, int NumColonne)
+
+donneTousLesCoupsValides
+	-> parcourt le tableau, et plave les coups jouables dans la liste, renvoi ne 		nb
+	=> appelle coupValide
+	int donneTousLesCoupsValides(plateau p, int joueur, Maillon ** teteMaillon)
+
+saisiUnCoup
+	-> saisi un coup en passant par variables ligne et colonne saisies
+	void saisiUnCoup(int joueur, int * NumLigne, int * NumColonne)
+
+donneStringCoupsValides
+	-> affiche tous les coups valides et retourne un caractere
+	=> appelle doneTousLesCoupsValides
+	char * donneStringCoupsValides(plateau p, int joueur)
+
+tourJoueur
+	-> fait jouer totalement un coup à un joueur
+	=> appelle beaucoup de fonctions
+	void tourJoueur(plateau p, int joueur)
+
+dupliPlateau
+	-> fait une copie de la table de jeu (pour simuler ensuite coups suivants)
+	void dupliPlateau(plateau p, plateau * dupli)
+
+------------------------------------------------------------------------------
+				HumainVsCPUMaxPions.c
+
+free_Maillon
+	-> efface la liste des coups jouables et libère la mémoire
+	void free_Maillons(Maillon * teteMaillon)
+
+ecartPions
+	-> compte la difference de pions entre joueur 1 et 2 et renvoi l'écart
+	=> appelle comptePions
+	int ecartPions(plateau p) 
+
+
+trouveCoupMaxPions
+	-> recherche le coup valide qui retournera le plus de pions
+	=> appelle beaucoup de fonctions
+	int trouveCoupMaxPions(plateau p, StrCoup * Coup,int joueur)
+
+tourCPUMaxPions
+	-> joue totalement un coup en maximisant le nb de pièces retournées
+	=> appelle plusieurs fonctions
+	void tourCPUMaxPions(plateau p, int joueur)
+
+tourCPU
+	-> fait jouer totalement un coup au CPU en recherchant à retourner le plus 		de pions
+	=> appelle beaucoup de fonctions
+	void tourCPU(plateau p, int joueur)
+
+------------------------------------------------------------------------------
+				HumainVsCPUMinOptions.c
+
+nbCoupsValides
+	-> compte le nombre de coups jouables pour un joueur et renvoi ce nombre
+int nbCoupsValides(plateau p, int joueur)
+
+trouveCoupMinOptions
+	-> renvoie le coup qui donne le moins de coups jouables pour l'adversaire
+int trouveCoupMinOptions(plateau p, StrCoup * Coup,int joueur);
+
+tourCPUMinOptions
+	-> fait jouer totalement un coup en minimisant le nombre de reponses 			possibles 
+	void tourCPUMinOptions(plateau p, int joueur);
+
+------------------------------------------------------------------------------
+				HumainVsCPURandom.c
+
+
+void tourCPURandom
+	-> fait jouer totalement un coup au CPU en choisissant aleatoirement parmi 		les cps valides
+	=> appelle beaucoup de fonctions
+	void tourCPURandom(plateau p, int joueur)
+
+
+------------------------------------------------------------------------------
+				fprise.c
+
+renvoieContenuCase
+
+	-> retourne le contenu d'une case passée en paramètre (0,1 ou 2)
+	int renvoieContenuCase(plateau p, int NumLigne, int NumColonne)
+
+
+faitPriseDansDirection
+	-> renvoie 0 ou 1 si on peut prendre dans la direction ou pas
+	=> appel renvoieContenuCase
+	int faitPriseDansDirection (int direction,int joueur,plateau p,int 			NumLigne,int NumColonne)
+
+
+retournePionsDansDirection
+
+	-> teste si dans pions peuvent être retournés dans la direction
+	   et si on peut le faire, on retourne les pions dans la direction
+	   jusqu'à rencontrer un pion du joueur (renvoie le nombre de pions retournés)
+	=> appel renvoieContenuCase
+	=> appel faitPriseDansDirection
+	int retournePionsDansDirection(int direction,int joueur,plateau p,int NumLigne,int NumColonne)
+
+
+retournePions (= faitPrise)
+
+	-> teste dans les 8 directions le retournement des pions
+	   en appelant la fonction retournePionsDansDirection (retourne le nombre de pions
+	   retournés dans les 8 directions)
+	int retournePions(int joueur, plateau p, int NumLigne, int NumColonne)
+
+
+faitPrise
+
+	-> retourne 1 si un pion est prenable, 0 pour l'inverse
+	=> appelle faitPriseDansDirection
+	int faitPrise(int joueur,plateau p, int NumLigne, int NumColonne)
+
+
+------------------------------------------------------------------------------
+				definitions.c
+
+initialiserPlateau
+	-> initialise le plateau avec toute les case vide sauf les 4 du milieu
+	void initialiserPlateau(plateau p)
+
+initialiserPlateauCoef
+	-> initialise un tableau de jeu avec une valeur de points pour chaque case
+	void initialiserPlateauCoef(plateau p)
+
+afficherPlateau
+	-> affiche le plateau
+	void afficherPlateau(plateau p)
+
+videStdin
+	-> vide la saisie clavier et attend le clic sur entrée
+	void videStdin()
+
+------------------------------------------------------------------------------
+				modeDeJeu.c
+
+HumainVsHumain
+	-> fait jouer une partie complète entre deux joueurs
+void HumainVsHumain()
+
+
+HumainVsCPUMaxPions
+	-> fait jouer une partie complète entre un joueur et l'ordi avec Max pions 		retournés
+	void HumainVsCPUMaxPions()
+
+
+HumainVsCPUMinOptions
+	-> fait jouer une partie complète entre un joueur et l'ordi avec Min coups 		jouables pour l'adversaire
+	void HumainVsCPUMinOptions()
+
+
+HumainVsCPURandom
+	-> fait jouer une partie complète entre un joueur et l'ordi avec des 			reponses aleatoires parmis celles possibles
+	void HumainVsCPURandom()
+
+
+CPUVsCPU
+	-> fait jouer une partie complète entre 2 ordi avec chacune sa regle définie.
+	void CPUVsCPU(int niveauOrdi1, int niveauOrdi2)
+
+
+------------------------------------------------------------------------------
+				menu.c
+
+proposeEtChoixMenu
+	-> affiche le menu principal 
+int proposeEtChoixMenu()
+
+proposeEtChoixModeDeJeu
+	-> affiche le menu mode de jeu (à 2, contre l'ordi,etc...) 
+int proposeEtChoixModeDeJeu()
+
+proposeEtChoixNiveauDeJeu
+	-> affiche le menu niveau de jeu (random, maxPions, minOptons,etc...)
+int proposeEtChoixNiveauDeJeu()
+
+proposeEtChoixNiveauDeJeuCPUVsCPU
+	-> affiche le menu niveau de jeux pour chaque ordi 
+int proposeEtChoixNiveauDeJeuCPUVsCPU(int num)
+
+-----------------------------------------------------------------------------
+
+

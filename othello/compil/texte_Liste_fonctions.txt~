@@ -1,0 +1,145 @@
+				ftour.c
+
+
+comptePions
+	-> compte le nombre de pions pour chaque joueur
+	void comptePions(plateau p, int *NbPions1, int *NbPions2)
+
+existeCoupPourJouer
+	-> teste si le joueur peut jouer un coup ou pas (1 pour vrai 0 pour faux)
+	int existeCoupPourJoueur(plateau p,int joueur)
+
+joueLeCoup
+	-> retourne le pion
+	=> appel à la fonction retournePions pour retourner les lignes
+	=> appelle la fonction afficherPlateau
+	void joueLeCoup(plateau p, int NumLigne, int NumColonne, int joueur)
+
+partieTerminee
+	-> si il existe plus de coup à jouer pour 1 et 2 renvoie 0 sinon 1
+	=> appel de existeCoupPourJoueur
+	int partieTerminee(plateau p)
+
+donneTousLesCoupsValides
+	-> parcourt le tableau, et plave les coups jouables dans la liste, renvoi ne nb
+	=> appelle coupValide
+	int donneTousLesCoupsValides(plateau p, int joueur, Maillon ** teteMaillon)
+
+saisiUnCoup
+	-> saisi un coup en passant par variables ligne et colonne saisies
+	void saisiUnCoup(int joueur, int * NumLigne, int * NumColonne)
+
+donneStringCoupsValides
+	-> affiche tous les coups valides et retourne un caractere
+	=> appelle doneTousLesCoupsValides
+	char * donneStringCoupsValides(plateau p, int joueur)
+
+tourJoueur
+	-> fait jouer totalement un coup à un joueur
+	=> appelle beaucoup de fonctions
+	void tourJoueur(plateau p, int joueur)
+
+free_Maillon
+	-> efface la liste des coups jouables et libère la mémoire
+	void free_Maillons(Maillon * teteMaillon)
+
+ecartPions
+	-> compte la difference de pions entre joueur 1 et 2 et renvoi l'écart
+	=> appelle comptePions
+	int ecartPions(plateau p) 
+
+dupliPlateau
+	-> fait une copie de la table de jeu (pour simuler ensuite coups suivants)
+	void dupliPlateau(plateau p, plateau * dupli)
+
+trouveCoupMaxPions
+	-> recherche le coup valide qui retournera le plus de pions
+	=> appelle beaucoup de fonctions
+	int trouveCoupMaxPions(plateau p, StrCoup * Coup,int joueur)
+
+tourCPU
+	-> fait jouer totalement un coup au CPU en recherchant à retourner le plus de pions
+	=> appelle beaucoup de fonctions
+	void tourCPU(plateau p, int joueur)
+
+moteurOrdiAleatoire
+	-> fait jouer totalement un coup au CPU en choisissant aleatoirement parmi les cps valides
+	=> appelle beaucoup de fonctions
+	void moteurOrdiAleatoire(plateau p, int joueur)
+
+------------------------------------------------------------------------------
+				fprise.c
+
+faitPriseDansDirection
+	-> renvoie 0 ou 1 si on peut prendre dans la direction ou pas
+	=> appel renvoieContenuCase
+	int faitPriseDansDirection (int direction,int joueur,plateau p,int NumLigne,int NumColonne)
+
+
+retournePionsDansDirection
+
+	-> teste si dans pions peuvent être retournés dans la direction
+	   et si on peut le faire, on retourne les pions dans la direction
+	   jusqu'à rencontrer un pion du joueur (renvoie le nombre de pions retournés)
+	=> appel renvoieContenuCase
+	=> appel faitPriseDansDirection
+	int retournePionsDansDirection(int direction,int joueur,plateau p,int NumLigne,int NumColonne)
+
+
+retournePions (= faitPrise)
+
+	-> teste dans les 8 directions le retournement des pions
+	   en appelant la fonction retournePionsDansDirection (retourne le nombre de pions
+	   retournés dans les 8 directions)
+	int retournePions(int joueur, plateau p, int NumLigne, int NumColonne)
+
+
+faitPrise
+
+	-> retourne 1 si un pion est prenable, 0 pour l'inverse
+	=> appelle faitPriseDansDirection
+	int faitPrise(int joueur,plateau p, int NumLigne, int NumColonne)
+
+
+coupValide
+
+	-> teste si une case peut etre jouée (0 ou 1)
+	=> appel faitPrise
+	=> appel renvoieContenuCase
+	int coupValide(int joueur, plateau p, int NumLigne, int NumColonne)
+
+
+renvoieContenuCase
+
+	-> retourne le contenu d'une case passée en paramètre (0,1 ou 2)
+	int renvoieContenuCase(plateau p, int NumLigne, int NumColonne)
+
+------------------------------------------------------------------------------
+
+
+
+initialiserPlateau
+	-> initialise le plateau avec toute les case vide sauf les 4 du milieu
+
+afficherPlateau
+	-> affiche le plateau
+
+demandeDIM_MAX
+	-> demande la taille du plateau à l'utilisateur
+
+joueHumainHumain
+	-> 
+
+caseVide
+	-> retourne si la case est vide (1 ou 0)
+
+adversaire
+	-> retourne l'adversaire du joueur passé en paramètre (1 ou 2)
+
+evalue
+	-> renvoie l'équart de pions en float
+
+valeurQuantitative
+	-> Affiche le nombre de pions pour chaque joueur 
+	=> en appelant comptePions (renvoi l'équart de pions entre les deux joueurs)
+

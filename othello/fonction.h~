@@ -1,0 +1,20 @@
+#define DIM_MAX 8
+
+typedef int plateau[DIM_MAX][DIM_MAX];
+
+typedef struct _StrCoup {
+                     
+                           int ligne;
+                           int colonne;
+                           int joueur;   
+ 
+                        } StrCoup;
+
+typedef struct _Maillon { 
+                        
+                          StrCoup coup;
+                          struct _Maillon * suivant;
+ 
+                        } Maillon;
+
+void joueHumainHumain();

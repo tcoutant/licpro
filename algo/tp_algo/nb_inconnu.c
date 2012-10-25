@@ -7,9 +7,9 @@ int size,rep, coup,nb;
 
 void main()  
 {
-coup=1;size=1000;
+coup=1;size=3;
 srandom(getpid());
-nb=random()%size;
+nb=(random()%size)+1;
 printf ("donner un nombre :  ");
 scanf("%d",&rep);
 while ((rep!=nb)&&(coup<10))

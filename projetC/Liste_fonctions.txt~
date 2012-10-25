@@ -1,0 +1,67 @@
+caseVide
+	-> retourne si la case est vide (1 ou 0)
+
+adversaire
+	-> retourne l'adversaire du joueur passé en paramètre (1 ou 2)
+
+renvoieContenuCase
+	-> retourne le contenu d'une case passée en paramètre (0,1 ou 2)
+
+comptePions
+	-> compte le nombre de pions pour chaque joueur
+
+existeCoupPourJouer
+	-> teste si le joueur peut jouer un coup ou pas (0 ou 1)
+
+joueLeCoup
+	-> retourne le pion
+	=> appel à la fonction retournePions pour retourner les lignes
+
+valeurQuantitative
+	-> Affiche le nombre de pions pour chaque joueur 
+	=> en appelant comptePions (renvoi l'équart de pions entre les deux joueurs)
+
+evalue
+	-> renvoie l'équart de pions en float
+
+partieTerminee
+	-> si il existe plus de coup à jouer pour 1 et 2 renvoie 0 sinon 1
+	=> appel de existeCoupPourJoueur
+
+------------------------------------------------------------------------------
+
+faitPriseDansDirection
+	-> renvoie 0 ou 1 si on peut prendre dans la direction ou pas
+	=> appel renvoieContenuCase
+
+retournePionsDansDirection
+	-> teste si dans pions peuvent être retournés dans la direction
+	   et si on peut le faire, on retourne les pions dans la direction
+	   jusqu'à rencontrer un pion du joueur (renvoie le nombre de pions retournés)
+	=> appel renvoieContenuCase
+	=> appel faitPriseDansDirection
+
+retournePions (= faitPrise)
+	-> teste dans les 8 directions le retournement des pions
+	   en appelant la fonction retournePionsDansDirection (retourne le nombre de pions
+	   retournés dans les 8 directions)
+
+------------------------------------------------------------------------------
+
+coupValide
+	-> teste si une case peut etre jouée (0 ou 1)
+	=> appel faitPrise
+	=> appel renvoieContenuCase
+
+initialiserPlateau
+	-> initialise le plateau avec toute les case vide sauf les 4 du milieu
+
+afficherPlateau
+	-> affiche le plateau
+
+demandeDIM_MAX
+	-> demande la taille du plateau à l'utilisateur
+
+joueHumainHumain
+	-> 
+
