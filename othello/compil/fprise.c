@@ -9,7 +9,7 @@
 #include "HumainVsCPURandom.h"
 #include "HumainVsCPUMaxPions.h"
 #include "HumainVsCPUMinOptions.h"
-
+#include "HumainVsCPUMaxValeurCase.h"
 
 /*
 	Renvoie le contenu de la case (0, 1 ou 2)

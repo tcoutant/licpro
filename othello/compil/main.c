@@ -9,7 +9,7 @@
 #include "HumainVsCPURandom.h"
 #include "HumainVsCPUMaxPions.h"
 #include "HumainVsCPUMinOptions.h"
-
+#include "HumainVsCPUMaxValeurCase.h"
 
 
 
@@ -53,7 +53,11 @@ int main()
 							HumainVsCPUMinOptions();
 							main();
 							break;
-						case 4: // niveau expert, minimax
+						case 4: // niveau moyen, joue la case maitresse par rapport à sa situation
+							HumainVsCPUMaxValeurCase();
+							main();
+							break;
+						case 5: // niveau expert, minimax
 	  						break;
 					}
 					break;
@@ -104,9 +108,11 @@ int main()
 			printf("\t---------------------Jeu othello----------------------\n\n");
 			printf("\télaboré par: Thomas Fraquet, Florent Guibert, Thierry Coutant\n");
 			printf("\n");
+			printf("\tTuteur: Matthieu Basseur\n");
+			printf("\n\n");
 			printf("\tSources: Vincent Spiewak et Allaedine Elbanna\n");
 	
-			printf("\n\n\n\n\n\n\n");
+			printf("\n\n\n\n\n");
 			printf("\ttapez 1 puis Entrée pour revenir au menu...\n");
 			scanf("%d",&c);
 			while(c!=1)
@@ -116,7 +122,7 @@ int main()
 
 
 		case 4: //menu quitter le jeu a été choisi	   
-			printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+			printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 			printf("Au revoir ...\n");
 			printf("\n\n\n");
 			break;

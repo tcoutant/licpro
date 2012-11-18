@@ -9,6 +9,7 @@
 #include "HumainVsCPURandom.h"
 #include "HumainVsCPUMaxPions.h"
 #include "HumainVsCPUMinOptions.h"
+#include "HumainVsCPUMaxValeurCase.h"
 
 
 /*	Libère une liste chainée */
@@ -72,8 +73,8 @@ int trouveCoupMaxPions(plateau p, StrCoup * Coup,int joueur)
 	donneTousLesCoupsValides(p,joueur,&teteMaillon);//Rentre tout les coup valides dans la liste chainée
 	tmpMaillon=teteMaillon;//Pour pouvoir parcourir la chaine
 
-	 /*********************************\
-   	|   Parcours de la liste chainée   |
+	/*********************************\
+   	|   Parcours de la liste chainée  |
 	\*********************************/
    
 	/* Tant que le maillon est pas null */
@@ -137,7 +138,7 @@ void tourCPUMaxPions(plateau p, int joueur)
 	printf("Ecart retenu apres coup: %d\n",trouveCoupMaxPions(p,Coup,joueur));
 
 	joueLeCoup(p,(Coup->ligne),(Coup->colonne),joueur);
-	printf("Coup aléatoire joué par l'ordi : (%c %d)\n", 'a'+Coup->colonne, Coup->ligne+1);
+	printf("Coup maxPions joué par l'ordi : (%c %d)\n", 'a'+Coup->colonne, Coup->ligne+1);
 
 	free(Coup); //Liberation de la structure Coup
 	}      

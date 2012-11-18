@@ -1,4 +1,4 @@
-#define DIM_MAX 4
+#define DIM_MAX 8
 
 typedef int plateau[DIM_MAX][DIM_MAX];
 

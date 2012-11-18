@@ -30,17 +30,17 @@ void tourCPURandom(plateau p, int joueur)
         /*remplit la liste des coups jouables et retourne le nb de coups possibles*/
 
 	nbCoupsPossibles=donneTousLesCoupsValides(p,joueur,&teteMaillon);
-	printf("nb de Cases Possibles = %d\n",nbCoupsPossibles);
+	//printf("nb de Cases Possibles = %d\n",nbCoupsPossibles);
 
 	/* effectue un random sur le nombre de valeurs possibles*/
 
-	nbAleatoireChoisi = (random()%nbCoupsPossibles)+1;
-	printf("Case Aleatoire Choisi = %d\n",nbAleatoireChoisi);
+	nbAleatoireChoisi = (random()%nbCoupsPossibles);
+	printf("Case Aleatoire Choisi = %d\n",nbAleatoireChoisi+1);
 	courantMaillon = teteMaillon;   //Pour parcourire teteMaillon
 
 	/* retrouver dans la liste le coup choisi aleatoirement */
 
-	while (test<(nbAleatoireChoisi-1))//-1 pour aller un cran moins loin dans le liste
+	while (test<nbAleatoireChoisi)
 	{
 		courantMaillon = courantMaillon->suivant;
 		test++;
@@ -48,7 +48,7 @@ void tourCPURandom(plateau p, int joueur)
 	
 	/* joue le coup choisi aleatoirement */
 	joueLeCoup(p,courantMaillon->coup.ligne,courantMaillon->coup.colonne,joueur);
-	printf("Coup aléatoire joué par l'ordi : (%c %d)\n", 'a'+courantMaillon->coup.colonne, courantMaillon->coup.ligne+1);
+	printf("Coup aléatoire joué par l'ordi : (%c %d)\n", 'a'+courantMaillon->coup.colonne, courantMaillon->coup.ligne);
 	free_Maillons(teteMaillon);//Libération de tout les maillons     
 	}    
 }

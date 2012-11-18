@@ -9,6 +9,7 @@
 #include "HumainVsCPURandom.h"
 #include "HumainVsCPUMaxPions.h"
 #include "HumainVsCPUMinOptions.h"
+#include "HumainVsCPUMaxValeurCase.h"
 
 
 /*
@@ -139,7 +140,7 @@ int donneTousLesCoupsValides(plateau p, int joueur, Maillon ** teteMaillon)
               }       
 
          *teteMaillon=courantMaillon;
-	printf("Il y a %d coups valides : ", cpt);
+	printf("Il y a %d coups jouables : ", cpt);
    return cpt;
 }
 /*______________________________________________________________________________*/

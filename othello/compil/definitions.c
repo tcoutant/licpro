@@ -5,10 +5,11 @@
 #include "fmenu.h"
 #include "fprise.h"
 #include "ftour.h"
-#include "HumainVsHumain.h"
+#include "modeDeJeu.h"
 #include "HumainVsCPURandom.h"
 #include "HumainVsCPUMaxPions.h"
 #include "HumainVsCPUMinOptions.h"
+#include "HumainVsCPUMaxValeurCase.h"
 
 /*
 	Les définitions des structures sont dans le fichier "definitions.h"
@@ -34,8 +35,25 @@ void initialiserPlateau(plateau p)
 
 
 /*
-	Initialise toutes les cases avec des valeurs selon leur place sur le plateau
-*/
+	Initialise toutes les cases avec des valeurs selon leurs places sur le plateau
+			+-----+-----+-----+-----+-----+-----+-----+-----+
+			| 800 |-500 | 300 | 300 | 300 | 300 |-500 | 800 |
+			+-----+-----+-----+-----+-----+-----+-----+-----+
+			|-500 |-500 | 200 | -50 | -50 | 200 |-500 |-500 |
+			+-----+-----+-----+-----+-----+-----+-----+-----+
+			| 300 | 200 | 100 | 100 | 100 | 100 | 200 | 300 |
+			+-----+-----+-----+-----+-----+-----+-----+-----+
+			| 300 | -50 | 100 |  0  |  0  | 100 | -50 | 300 |
+			+-----+-----+-----+-----+-----+-----+-----+-----+
+			| 300 | -50 | 100 |  0  |  0  | 100 | -50 | 300 |
+			+-----+-----+-----+-----+-----+-----+-----+-----+
+			| 300 | 200 | 100 | 100 | 100 | 100 | 200 | 300 |
+			+-----+-----+-----+-----+-----+-----+-----+-----+
+			|-500 |-500 | 200 | -50 | -50 | 200 |-500 |-500 |
+			+-----+-----+-----+-----+-----+-----+-----+-----+
+			| 800 |-500 | 300 | 300 | 300 | 300 |-500 | 800 |
+			+-----+-----+-----+-----+-----+-----+-----+-----+
+*/  
 void initialiserPlateauCoef(plateau p)
 {
 	p[0][0]=p[0][DIM_MAX-1]=p[DIM_MAX-1][0]=p[DIM_MAX-1][DIM_MAX-1]=800;

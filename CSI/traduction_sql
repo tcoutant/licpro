@@ -1,0 +1,136 @@
+# script créé le : Sat Nov 17 12:20:24 CET 2012 -   syntaxe MySQL ;
+
+# use  VOTRE_BASE_DE_DONNEE ;
+
+DROP TABLE IF EXISTS Traducteur ;
+CREATE TABLE Traducteur (id-traducteur int AUTO_INCREMENT NOT NULL,
+nom-traducteur INT,
+prenom-traducteur INT,
+mail-traducteur INT,
+id-langue INT NOT NULL,
+PRIMARY KEY (id-traducteur) ) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS Langue ;
+CREATE TABLE Langue (id-langue int AUTO_INCREMENT NOT NULL,
+nom-langue INT,
+PRIMARY KEY (id-langue) ) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS Traduction ;
+CREATE TABLE Traduction (id-traduction int AUTO_INCREMENT NOT NULL,
+texte INT,
+nb_mots INT,
+id-langue INT NOT NULL,
+id-client INT NOT NULL,
+PRIMARY KEY (id-traduction) ) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS Client ;
+CREATE TABLE Client (id-client int AUTO_INCREMENT NOT NULL,
+non_client INT,
+adresse_client INT,
+id-categorie INT NOT NULL,
+PRIMARY KEY (id-client) ) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS Categorie ;
+CREATE TABLE Categorie (id-categorie int AUTO_INCREMENT NOT NULL,
+libelle_categ INT,
+id-domaine INT,
+PRIMARY KEY (id-categorie) ) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS Domaine ;
+CREATE TABLE Domaine (id-domaine int AUTO_INCREMENT NOT NULL,
+nom_domaine INT,
+PRIMARY KEY (id-domaine) ) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS Tarif ;
+CREATE TABLE Tarif (id-tarif int AUTO_INCREMENT NOT NULL,
+prix_base INT,
+id-langue INT NOT NULL,
+id-langue_CIF9 INT NOT NULL,
+PRIMARY KEY (id-tarif) ) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS parle ;
+CREATE TABLE parle (id-traducteur int AUTO_INCREMENT NOT NULL,
+id-langue INT NOT NULL,
+PRIMARY KEY (id-traducteur,
+ id-langue) ) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS traduite_dans ;
+CREATE TABLE traduite_dans (id-langue int AUTO_INCREMENT NOT NULL,
+id-traduction INT NOT NULL,
+PRIMARY KEY (id-langue,
+ id-traduction) ) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS possede ;
+CREATE TABLE possede (id-traducteur int AUTO_INCREMENT NOT NULL,
+id-domaine INT NOT NULL,
+PRIMARY KEY (id-traducteur,
+ id-domaine) ) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS decouper ;
+CREATE TABLE decouper (id-traducteur int AUTO_INCREMENT NOT NULL,
+id-traduction INT NOT NULL,
+mot_depart INT,
+mot_fin INT,
+PRIMARY KEY (id-traducteur,
+ id-traduction) ) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS CIF6 ;
+CREATE TABLE CIF6 (id-traducteur int AUTO_INCREMENT NOT NULL,
+id-traduction INT NOT NULL,
+id-langue INT NOT NULL,
+PRIMARY KEY (id-traducteur,
+ id-traduction,
+ id-langue) ) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS traduction_unique ;
+CREATE TABLE traduction_unique (id-traducteur int AUTO_INCREMENT NOT NULL,
+id-langue INT NOT NULL,
+id-traduction INT NOT NULL,
+PRIMARY KEY (id-traducteur,
+ id-langue,
+ id-traduction) ) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS responsable ;
+CREATE TABLE responsable (id-langue int AUTO_INCREMENT NOT NULL,
+id-traduction INT NOT NULL,
+id-traducteur INT NOT NULL,
+PRIMARY KEY (id-langue,
+ id-traduction,
+ id-traducteur) ) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS CIF7 ;
+CREATE TABLE CIF7 (id-traducteur int AUTO_INCREMENT NOT NULL,
+id-traduction INT NOT NULL,
+id-langue INT NOT NULL,
+PRIMARY KEY (id-traducteur,
+ id-traduction,
+ id-langue) ) ENGINE=InnoDB;
+
+ALTER TABLE Traducteur ADD CONSTRAINT FK_Traducteur_id-langue FOREIGN KEY (id-langue) REFERENCES Langue (id-langue);
+
+ALTER TABLE Traduction ADD CONSTRAINT FK_Traduction_id-langue FOREIGN KEY (id-langue) REFERENCES Langue (id-langue);
+ALTER TABLE Traduction ADD CONSTRAINT FK_Traduction_id-client FOREIGN KEY (id-client) REFERENCES Client (id-client);
+ALTER TABLE Client ADD CONSTRAINT FK_Client_id-categorie FOREIGN KEY (id-categorie) REFERENCES Categorie (id-categorie);
+ALTER TABLE Categorie ADD CONSTRAINT FK_Categorie_id-domaine FOREIGN KEY (id-domaine) REFERENCES Domaine (id-domaine);
+ALTER TABLE Tarif ADD CONSTRAINT FK_Tarif_id-langue FOREIGN KEY (id-langue) REFERENCES Langue (id-langue);
+ALTER TABLE Tarif ADD CONSTRAINT FK_Tarif_id-langue_CIF9 FOREIGN KEY (id-langue_CIF9) REFERENCES Langue (id-langue);
+ALTER TABLE parle ADD CONSTRAINT FK_parle_id-traducteur FOREIGN KEY (id-traducteur) REFERENCES Traducteur (id-traducteur);
+ALTER TABLE parle ADD CONSTRAINT FK_parle_id-langue FOREIGN KEY (id-langue) REFERENCES Langue (id-langue);
+ALTER TABLE traduite_dans ADD CONSTRAINT FK_traduite_dans_id-langue FOREIGN KEY (id-langue) REFERENCES Langue (id-langue);
+ALTER TABLE traduite_dans ADD CONSTRAINT FK_traduite_dans_id-traduction FOREIGN KEY (id-traduction) REFERENCES Traduction (id-traduction);
+ALTER TABLE possede ADD CONSTRAINT FK_possede_id-traducteur FOREIGN KEY (id-traducteur) REFERENCES Traducteur (id-traducteur);
+ALTER TABLE possede ADD CONSTRAINT FK_possede_id-domaine FOREIGN KEY (id-domaine) REFERENCES Domaine (id-domaine);
+ALTER TABLE decouper ADD CONSTRAINT FK_decouper_id-traducteur FOREIGN KEY (id-traducteur) REFERENCES Traducteur (id-traducteur);
+ALTER TABLE decouper ADD CONSTRAINT FK_decouper_id-traduction FOREIGN KEY (id-traduction) REFERENCES Traduction (id-traduction);
+ALTER TABLE CIF6 ADD CONSTRAINT FK_CIF6_id-traducteur FOREIGN KEY (id-traducteur) REFERENCES Traducteur (id-traducteur);
+ALTER TABLE CIF6 ADD CONSTRAINT FK_CIF6_id-traduction FOREIGN KEY (id-traduction) REFERENCES Traduction (id-traduction);
+ALTER TABLE CIF6 ADD CONSTRAINT FK_CIF6_id-langue FOREIGN KEY (id-langue) REFERENCES Langue (id-langue);
+ALTER TABLE traduction_unique ADD CONSTRAINT FK_traduction_unique_id-traducteur FOREIGN KEY (id-traducteur) REFERENCES Traducteur (id-traducteur);
+ALTER TABLE traduction_unique ADD CONSTRAINT FK_traduction_unique_id-langue FOREIGN KEY (id-langue) REFERENCES Langue (id-langue);
+ALTER TABLE traduction_unique ADD CONSTRAINT FK_traduction_unique_id-traduction FOREIGN KEY (id-traduction) REFERENCES Traduction (id-traduction);
+ALTER TABLE responsable ADD CONSTRAINT FK_responsable_id-langue FOREIGN KEY (id-langue) REFERENCES Langue (id-langue);
+ALTER TABLE responsable ADD CONSTRAINT FK_responsable_id-traduction FOREIGN KEY (id-traduction) REFERENCES Traduction (id-traduction);
+ALTER TABLE responsable ADD CONSTRAINT FK_responsable_id-traducteur FOREIGN KEY (id-traducteur) REFERENCES Traducteur (id-traducteur);
+ALTER TABLE CIF7 ADD CONSTRAINT FK_CIF7_id-traducteur FOREIGN KEY (id-traducteur) REFERENCES Traducteur (id-traducteur);
+ALTER TABLE CIF7 ADD CONSTRAINT FK_CIF7_id-traduction FOREIGN KEY (id-traduction) REFERENCES Traduction (id-traduction);
+ALTER TABLE CIF7 ADD CONSTRAINT FK_CIF7_id-langue FOREIGN KEY (id-langue) REFERENCES Langue (id-langue);

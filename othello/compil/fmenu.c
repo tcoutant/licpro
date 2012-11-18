@@ -9,6 +9,7 @@
 #include "HumainVsCPURandom.h"
 #include "HumainVsCPUMaxPions.h"
 #include "HumainVsCPUMinOptions.h"
+#include "HumainVsCPUMaxValeurCase.h"
 
 
 /*/////////////////////////////////
@@ -25,7 +26,7 @@ int proposeEtChoixMenu()
    choix=-1;
    do
    {
-      printf("\n\n\n");
+      printf("\n\n");
       printf("______________________________________________________\n"); 
       printf("|                                                     |\n");
       printf("|            Menu Principal du jeu othello            |\n");
@@ -65,7 +66,7 @@ int proposeEtChoixModeDeJeu()
 		printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 		printf("______________________________________________________\n"); 
 		printf("|                                                     |\n");
-	 	printf("|              Menu choix du type de jeu             |\n");
+	 	printf("|              Menu choix du type de jeu              |\n");
 		printf("______________________________________________________\n");
 		printf("\n");
 		printf("         1 - à 2 joueurs \n");
@@ -79,7 +80,7 @@ int proposeEtChoixModeDeJeu()
 		printf("\n\n\n\n\n\n"); 
 		printf("   Faites votre choix puis appuyez sur Entrée...\n");
 		scanf("%i",&mode);
-    }while(mode<1 || mode>3);
+    }while(mode<1 || mode>4);
    
    return mode;
 }
@@ -111,11 +112,13 @@ int proposeEtChoixNiveauDeJeu()
       printf("\n");
       printf("\t3 - Niveau 'MinOptions,\nl'ordinateur joue le coup qui minimise le nombre de possibilités de l'adversaire\n");
       printf("\n");
-      printf("\t4 - Niveau expert, (en projet! l'ordi utilise minimax)\n");
-      printf("\n\n\n\n\n\n"); 
+	  printf("\t4 - Niveau 'MaxValeurCase,\nl'ordinateur joue la case valorisée par rapport à sa position sur le plateau\n");
+      printf("\n");
+      printf("\t5 - Niveau expert, (en projet! l'ordi utilise minimax)\n");
+      printf("\n\n\n"); 
       printf("   Faites votre choix puis appuyez sur Entrée...\n");
       scanf("%i",&niveau);
-    } 	  while(niveau<1 || niveau>4);
+    } 	  while(niveau<1 || niveau>5);
    
    return niveau;
 }
@@ -140,7 +143,7 @@ int proposeEtChoixNiveauDeJeuCPUVsCPU(int num)
       printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
       printf("\t______________________________________________________\n"); 
       printf("\t|                                                     |\n");
-      printf("\t|             choix du niveau de l'Ordinateur %d       |\n", num);
+      printf("\t|            choix du niveau de l'Ordinateur %d        |\n", num);
       printf("\t______________________________________________________\n");
       printf("\n");
       printf("\t1 - Niveau 'Random', réponse aléatoire de l'ordinateur \n");
@@ -149,9 +152,13 @@ int proposeEtChoixNiveauDeJeuCPUVsCPU(int num)
       printf("\n");
       printf("\t3 - Niveau 'MinOptions,\nl'ordinateur joue le coup qui minimise le nombre de possibilités de l'adversaire\n");
       printf("\n");
-      printf("\t4 - Niveau expert, (en projet! l'ordi utilise minimax)\n");
-      printf("\n\n\n\n\n\n"); 
+	  printf("\t4 - Niveau 'MaxValeurCase,\nl'ordinateur joue la case valorisée par rapport à sa position sur le plateau.\n");
+      printf("\n");
+      printf("\t5 - Niveau expert, (en projet! l'ordi utilise minimax)\n");
+      printf("\n\n\n"); 
       printf("   Faites votre choix puis appuyez sur Entrée...\n");
+	  if (num==1)printf("choix ordi %d: ",num);
+	  else printf("maintenant choix pour ordi %d: ",num);
       scanf(" %i",&niveau);
     } 	  while(niveau<1 || niveau>4);
    

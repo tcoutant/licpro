@@ -9,6 +9,7 @@
 #include "HumainVsCPURandom.h"
 #include "HumainVsCPUMaxPions.h"
 #include "HumainVsCPUMinOptions.h"
+#include "HumainVsCPUMaxValeurCase.h"
 
 /*
 	Compte, à partir d'un plateau et d'un joueur passé en paramètre, le nombre de coups possible pour ce joueur sur le plateau
@@ -124,7 +125,7 @@ void tourCPUMinOptions(plateau p, int joueur)
 	printf("Nombre de possibilité pour l'adversaire retenu : %d\n",trouveCoupMinOptions(p,Coup,joueur));
 
 	joueLeCoup(p,(Coup->ligne),(Coup->colonne),joueur);
-	printf("Coup joué par l'ordi : (%c %d)\n", 'a'+Coup->colonne, Coup->ligne+1);
+	printf("Coup minOptions joué par l'ordi : (%c %d)\n", 'a'+Coup->colonne, Coup->ligne+1);
 	free(Coup); //Liberation de la structure Coup
 	}      
 }
