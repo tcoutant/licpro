@@ -73,17 +73,22 @@ numero=3;
 
 -- 4.5 le nom du superieur direct de l'employe numero 3* OK!
 select membre.nom from membre where membre.numero=(select membre.superieur from membre where membre.numero=3);
+
 select m1.nom from membre m1, membre m2 where m2.numero=3 and m1.numero=m2.superieur;
+
 select m1.nom from membre m1 join membre m2 on m1.numero=m2.superieur where m2.numero=3;
 
 -- 4.6 le nom et prenom du superieur de l'employe de nom Jeremi et de prenom Simon OK!
 select membre.nom,prenom from membre where membre.numero=(select membre.superieur from membre where membre.nom='Simon' and prenom='Jeremi');
-select m1.nom,prenom from membre m1, membre m2 where m2.nom='Simon' and m2.prenom='Jeremi';
+
+select m1.nom,m1.prenom from membre m1, membre m2 where m2.nom='Simon' and m2.prenom='Jeremi'
+and m1.numero=m2.superieur;
 
 
 -- 4.7 les noms et prenoms des employes qui ne travaillent pas sur le projet PRJ2 OK!
 -- pas bonne solution : select membre.nom,prenom from membre,affectation where affectation.employe=membre.numero and affectation.projet!='PRJ2';
 select nom,prenom from membre where numero not in (select employe from affectation where projet='PRJ2');
+
 select nom,prenom from membre left join affectation on (membre.numero=affectation.employe and affectation.projet='PRJ2')where employe is NULL;
 
 -- 4.8 les noms des employes qui ont pour superieur direct Serge Karamazof OK!

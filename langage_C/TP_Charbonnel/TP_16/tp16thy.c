@@ -1,0 +1,61 @@
+# include <stdio.h>
+# include <stdlib.h>
+#include <pthread.h>
+
+void *f1(void *arg)
+{
+	/*	ecrire les lettresminuscules de a à z,
+		unelettre toutes les secondes	*/
+	int i;
+	for(i='a';i<='z';i++)
+	{
+		printf("%c ",i);
+	fflush(stdout); // pour forcer le printf a chaque boucle
+		sleep(1);
+	}
+
+	pthread_exit(0);
+}
+
+void *f2(void *arg)
+{
+	/*	 ecrire les lettres majuscules de A à Z,
+		une lettre toutes les 2 secondes	*/
+	int i;
+	for(i='A';i<='Z';i++)
+	{
+		printf("%c ",i);
+		fflush(stdout);
+		sleep(2);	
+	}
+	pthread_exit(0);
+}
+
+void *f3(void *arg)
+{
+	/*	ecrire les chiffres de 1 à 8, un chiffre toutes les 3 secondes	*/
+	int i;
+	for(i=1;i<=8;i++)
+	{
+		printf("%d ",i);
+		fflush(stdout);
+		sleep(3);
+	}
+	pthread_exit(0);
+		
+}
+
+int main(int nb_args, char *arg[])
+{
+   pthread_t t1,t2,t3;
+	if (pthread_create(&t1,NULL,f1,NULL)<0) perror ("f1 fails\n");
+	if (pthread_create(&t2,NULL,f2,NULL)<0) perror ("f2 fails\n");
+	if (pthread_create(&t3,NULL,f3,NULL)<0) perror ("f3 fails\n");
+
+	pthread_join(t1,NULL);
+	pthread_join(t2,NULL);
+	pthread_join(t3,NULL);
+
+    return 0;
+}
+

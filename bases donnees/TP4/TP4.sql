@@ -159,9 +159,20 @@ from Note, Etudiant
 where (Etudiant.ine=Note.etudiant)
 and matiere='BD';
 
--- 3.12 a corriger
+-- 3.12 a 
 select matiere,cursus
 from Examen
 where not exists (select null from Note, Etudiant where Note.etudiant=Etudiant.ine and note<10
-and Etudiant.cursus=Examen.curus and Note.matiere=Examen.matiere);
+and Etudiant.cursus=Examen.cursus and Note.matiere=Examen.matiere);
 
+-- 3.13 
+select Note.matiere,Etudiant.cursus
+from Note,Etudiant
+where Note.etudiant= Etudiant.ine and note>=10
+group by Note.matiere, Etudiant.cursus
+having count(*) >=2;
+
+-- 4.1 demarrer une transaction,supprimer les etudiants qui on moins de 10 en logique,
+--  verifier puis annuler cette transaction, verifier que l'etudiant est present
+begin transaction;
+--!!!!delete Etudiant where Etudiant.ine matiere='Logique' and note < 10;

@@ -1,0 +1,21 @@
+# include <stdio.h>
+# include <signal.h>
+
+void handler (int s)
+{
+	printf("signal%d bien recu\n",s);
+}
+
+int main()
+{
+	signal(SIGUSR1,handler);
+	int i;
+	for(i='a';i<='z';i++)
+	{
+		printf("%c ",i);
+	fflush(stdout); // pour forcer le printf a chaque boucle
+		sleep(3);
+	}
+	printf("\n");
+	return 0;
+}
